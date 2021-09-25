@@ -1,34 +1,149 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# next-typescript-prettier-eslint
 
-## Getting Started
+**Start dev:**
 
-First, run the development server:
-
-```bash
+```
 npm run dev
-# or
-yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Not sure if TypeScript and ESLint need to be installed globally, but installed:**
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```
+sudo npm i -g typescript
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+```
+npm i -g eslint
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+**Create a tsconfig.json file, restart**
 
-## Learn More
+**Install dependencies:**
 
-To learn more about Next.js, take a look at the following resources:
+```
+npm i --dev typescript @types/react @types/node
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Rename index.js to index.tsx**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+**Add ESLint:**
 
-## Deploy on Vercel
+```
+npm i --dev eslint
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Configure ESLint:**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```
+npx eslint --init
+```
+
+**To check syntax, find problems, and enforce code style, JavaScript modules (import/export), React, Yes, Browser, Use a popular style guide, Airbnb, JavaScript**
+
+**Add to eslintrc.js to avoid React detection bug:**
+
+```js
+  settings: {
+    react: {
+      version: "latest",
+    },
+  },
+```
+
+**Install Prettier:**
+
+```
+npm i --dev prettier
+```
+
+**Avoid conflicts with Prettier using eslint-config-prettier:**
+
+```
+npm i --dev eslint-config-prettier
+```
+
+**Add prettier to the extends array in the eslintrc.js file:**
+
+```js
+  'extends': [
+    'plugin:react/recommended',
+    'google',
+    'prettier'
+  ]
+```
+
+**For customizing Prettier Rules, create a .prettierrc file in root and add rules**
+
+```js
+{
+  "endOfLine": "lf",
+  "printWidth": 80,
+  "semi": false,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "es5"
+}
+```
+
+**Add .eslintignore and .prettierignore to not apply linting to certain files (optional)**
+
+**Install ESLint and Prettier VS Code plugins**
+
+**Modify VS Code settings: Code > Preferences > Settings and search for "Editor:default formatter" and select "Prettier - Code formatter". Also search for "format on" and check "Format on Paste" and "Format on Save".**
+
+**Close VS Code file and re-open**
+
+**Check index.tsx for errors, Add:**
+
+```js
+import React from 'react'
+
+/**
+ * This is the Home Page
+ * @return {JSX.Element}: The JSX Code for the Home Page
+ */
+```
+
+**Add to the .eslintrc.js file to remove errors:**
+
+```js
+  rules: {
+    "react/jsx-filename-extension": [1, { extensions: [".tsx", ".ts"] }],
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": ["error"],
+  },
+```
+
+**Reformat the code using Prettier, install if necessary:**
+
+```
+npm i -g prettier
+```
+
+```
+prettier --write .
+```
+
+**Evoke ESLint and Prettier on save, create a /.vscode/settings.json file:**
+
+```js
+{
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll.format": true
+  }
+}
+```
+
+**Done**
+
+### Settings are from:
+
+**How To Setup Next.JS with TypeScript, Prettier, ESLint and Husky**
+
+https://www.youtube.com/watch?v=sH93pQb9bWM
+
+https://github.com/jarrodwatts/code-like-google

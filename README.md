@@ -1,12 +1,18 @@
 # next-typescript-prettier-eslint
 
+**Install App**
+
+```
+npx create-next-app <app name>
+```
+
 **Start dev:**
 
 ```
 npm run dev
 ```
 
-**Not sure if TypeScript and ESLint need to be installed globally, but installed:**
+**Not sure if TypeScript and ESLint need to be installed globally:**
 
 ```
 sudo npm i -g typescript

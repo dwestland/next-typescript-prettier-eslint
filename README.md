@@ -24,8 +24,6 @@ sudo npm i -g typescript
 npm i -g eslint
 ```
 
-## Notes from creating this repository
-
 **Create a tsconfig.json file, restart**
 
 **Install dependencies:**

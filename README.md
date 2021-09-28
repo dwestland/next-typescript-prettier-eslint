@@ -14,8 +14,6 @@ npx create-next-app <app name>
 npm run dev
 ```
 
-**Install TypeScript and ESLint globally if you so desire:**
-
 ```
 sudo npm i -g typescript
 ```
